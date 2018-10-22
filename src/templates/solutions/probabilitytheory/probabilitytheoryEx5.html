@@ -1,0 +1,35 @@
+{% if solve.is_valid %}
+    <div class="solution-block">
+        <p>Решение:</p>
+        <p class="big-formuls-ftnz">
+            Используем геометрическое определение вероятности. Построим схематично отрезок и
+            изобразим точки, отстоящие от концов отрезка на расстояние \( \large
+            \frac{1}{ {{ solve.k }} }\):<br>
+            $$ рисунок $$
+            Отрезок в центре (между точками \( \large \frac{1}{ {{ solve.k }} } \) и
+            \( \large \frac{ {{ solve.k_minus_1 }} }{ {{ solve.k }} } \)) характеризуется тем,
+            что любая точка внутри этого отрезка отстоит от концов единичного отрезка на расстояние
+            не меньшее \( \large \frac{1}{ {{ solve.k }} } \). Таким образом, вероятность
+            искомого события равна отношению длины данного отрезка (\( {{ solve.P }} \)) к длине
+            всего единичного отрезка, на котором появляется точка:<br>
+            \(P = {{ solve.P }}\)
+        </p>
+    </div>
+
+{% else %}
+    <form class="form-horizontal" action="{{ task.get_absolute_url }}" method="get">
+        <div class="form-group">
+            <div class="col-xs-3">
+                <label for="k" class="big-formuls-ftnz control-label">Введите \(k\)</label>
+            </div>
+            <div class="col-xs-9">
+                <input class="form-control" type="number" id="k" name="k" required>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-xs-12 ">
+                <button class="btn btn-success" type="submit">Получить решение!</button>
+            </div>
+        </div>
+    </form>
+{% endif %}

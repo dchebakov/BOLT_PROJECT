@@ -1,0 +1,109 @@
+{% if solve.is_valid %}
+    <div class="solution-block">
+        <p>Решение:</p>
+        <p class="big-formuls-ftnz">(СЛУЧАЙ БЕЗ ВОЗВРАЩЕНИЯ)<br>
+            Используем классическое определение вероятности:
+            \( P = \large \frac{M}{N} \), где \( M \large \) – число исходов, благоприятствующих
+            осуществлению события, а \( N \large \) – число всех возможных исходов.<br>
+            Всего изделий \( n = {{ solve.n1}} + {{ solve.n2}} + {{ solve.n3}} + {{ solve.n4}} = {{ solve.n}} \),
+            выбирают \( m = {{ solve.m1}} + {{ solve.m2}} + {{ solve.m3}} + {{ solve.m4}} = {{ solve.m}}
+            \) изделий.<br>
+            \( N = C^{ {{ solve.m }} }_{ {{ solve.n }} } = {{ solve.N }} \) - число различных способов извлечь \(
+            {{ solve.m }} \) изделий из \( {{ solve.n }} \) имеющихся.<br>
+            \( M = C^{ {{ solve.m1 }} }_{ {{ solve.n1 }} } \cdot C^{ {{ solve.m2 }} }_{ {{ solve.n2 }} } \cdot
+            C^{ {{ solve.m3 }} }_{ {{ solve.n3 }} } \cdot C^{ {{ solve.m4 }} }_{ {{ solve.n4 }} } = {{ solve.M }} \: \)
+            - число способов извлечь \( {{ solve.m1 }} \) изделия 1 сорта (из \( {{ solve.n1 }} \)),
+            \( {{ solve.m2 }} \) изделия второго сорта (из \( {{ solve.n2 }} \)), \( {{ solve.m3 }}
+            \) изделия третьего сорта (из \( {{ solve.n3 }} \)) и \( {{ solve.m4 }} \) изделия четвертого сорта
+            (из \( {{ solve.n4 }} \)). <br> Тогда искомая вероятность:
+            \( \: P = \large \frac{ {{ solve.M }} }{ {{ solve.N }} } \)\( = {{ solve.P_without }} \).
+        </p>
+        <p class="big-formuls-ftnz"><br>(СЛУЧАЙ С ВОЗВРАЩЕНИЕМ)<br>
+            Вероятность взять из генеральной совокупности изделие i-ого сорта: \( p_i = \large
+            \frac{n_i}{n_1+n_2+n_3+n_4}\) <br>
+            Тогда \( p_1 = {{ solve.p1 }}, \ p_2 = {{ solve.p2 }}, \ p_3 = {{ solve.p3 }},
+            \ p_4 = {{ solve.p4 }}. \)
+            Используя обобщение формулы Бернулли (полиномиальная схема):
+            \( P_m(m_1,m_2,m_3,m_4) = \large \frac{m!}{m_1!\ m_2!\ m_3!\ m_4!} \)
+            \( p_1^{m_1}\ p_2^{m_2}\ p_3^{m_3}\ p_4^{m_4}\  \)
+            \( = {{ solve.P_with }} \) получаем искомую вероятность.
+        </p>
+    </div>
+
+{% else %}
+    <form class="form-horizontal" action="{{ task.get_absolute_url }}" method="get">
+        <div class="form-group">
+            <div class="col-xs-3">
+                <label for="n1" class="big-formuls-ftnz control-label">Введите \(n_1\)</label>
+            </div>
+            <div class="col-xs-9">
+                <input class="form-control" type="number" id="n1" name="n1" required>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-xs-3">
+                <label for="n2" class="big-formuls-ftnz control-label">Введите \(n_2\)</label>
+            </div>
+            <div class="col-xs-9">
+                <input class="form-control" type="number" id="n2" name="n2" required>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-xs-3">
+                <label for="n3" class="big-formuls-ftnz control-label">Введите \(n_3\)</label>
+            </div>
+            <div class="col-xs-9">
+                <input class="form-control" type="number" id="n3" name="n3" required>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-xs-3">
+                <label for="n4" class="big-formuls-ftnz control-label">Введите \(n_4\)</label>
+            </div>
+            <div class="col-xs-9">
+                <input class="form-control" type="number" id="n4" name="n4" required>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-xs-3">
+                <label for="m1" class="control-label big-formuls-ftnz">Введите \(m_1\)</label>
+            </div>
+
+            <div class="col-xs-9">
+                <input class="form-control" type="number" id="m1" name="m1" required>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-xs-3">
+                <label for="m2" class="control-label big-formuls-ftnz">Введите \(m_2\)</label>
+            </div>
+
+            <div class="col-xs-9">
+                <input class="form-control" type="number" id="m2" name="m2" required>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-xs-3">
+                <label for="m3" class="control-label big-formuls-ftnz">Введите \(m_3\)</label>
+            </div>
+
+            <div class="col-xs-9">
+                <input class="form-control" type="number" id="m3" name="m3" required>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-xs-3">
+                <label for="m4" class="control-label big-formuls-ftnz">Введите \(m_4\)</label>
+            </div>
+
+            <div class="col-xs-9">
+                <input class="form-control" type="number" id="m4" name="m4" required>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-xs-12 ">
+                <button class="btn btn-success" type="submit">Получить решение!</button>
+            </div>
+        </div>
+    </form>
+{% endif %}
