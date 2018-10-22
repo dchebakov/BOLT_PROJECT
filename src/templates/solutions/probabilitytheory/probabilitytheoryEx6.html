@@ -1,0 +1,57 @@
+{% if solve.is_valid %}
+    <div class="solution-block">
+        <p>Решение:</p>
+        <p class="big-formuls-ftnz">
+            Используем для решения задачи геометрическое определение вероятности.<br>
+            Обозначим моменты начала первого и второго события за \(x\) и \(y\) . Так как события поступают
+            в промежуток \(T_1\) до \(T_2\), то справедливы следующие условия: \( T_1 \le x, y \le T_2\).
+            Рассмотрим прямоугольную систему координат \(xOy\). В этой системе координат всем возможным
+            значениям времени начала событий соответствуют точки квадрата со стороной \(T_2 − T_1 =
+            {{ solve.T2 }} − {{ solve.T1 }} = {{ solve.T }} \) (см. рисунок).<br>
+            Закрашенная область \( S \) соответствует тем моментам начала событий, при которых они
+            «перекрываются», так как между началами событий проходит не больше времени, чем длится событие
+            (самое первое).
+            $$рисунок$$
+            Тогда по геометрическому определению вероятности вероятность события A (события «перекрываются»
+            во времени) равна отношению площади заштрихованной фигуры к площади всего квадрата. Площадь
+            фигуры вычислим как площадь квадрата минус площади двух равнобедренных прямоугольных треугольника:
+            \( P(A) = \large \frac{ {{ solve.T }}^2 - \frac{1}{2} ({{ solve.T }}-10)^2 - \frac{1}{2} ({{ solve.T }}
+            - {{ solve.t }})^2 }{ {{ solve.T }}^2 } = {{ solve.P }}\).
+            Вероятность противоположного события \( \bar A \) (события не «перекрываются» во времени) равна
+            \( P( \bar A) = 1 − P(A) = {{ solve.not_P }} \).
+        </p>
+    </div>
+
+{% else %}
+    <form class="form-horizontal" action="{{ task.get_absolute_url }}" method="get">
+        <div class="form-group">
+            <div class="col-xs-3">
+                <label for="T1" class="big-formuls-ftnz control-label">Введите \(T_1\)</label>
+            </div>
+            <div class="col-xs-9">
+                <input class="form-control" type="number" id="T1" name="T1" required>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-xs-3">
+                <label for="T2" class="big-formuls-ftnz control-label">Введите \(T_2\)</label>
+            </div>
+            <div class="col-xs-9">
+                <input class="form-control" type="number" id="T2" name="T2" required>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-xs-3">
+                <label for="t" class="big-formuls-ftnz control-label">Введите \(t\)</label>
+            </div>
+            <div class="col-xs-9">
+                <input class="form-control" type="number" id="t" name="t" required>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-xs-12 ">
+                <button class="btn btn-success" type="submit">Получить решение!</button>
+            </div>
+        </div>
+    </form>
+{% endif %}

@@ -1,0 +1,45 @@
+{% if solve.is_valid %}
+    <div class="solution-block">
+        <p>Решение:</p>
+        <p class="big-formuls-ftnz">
+            Используем геометрическое определение вероятности. Считаем, что обе фигуры целиком лежат
+            в круге. Тогда вероятность того, что точка попадает в одну из двух непересекающихся фигур
+            равна отношению сумме площадей данных фигур к площади всего круга, где точка появляется:
+            \( P = \large \frac{ S1 + S2 }{ \pi R^2 } =
+            \frac{ {{ solve.S1 }}+{{ solve.S2 }} }{ {{ solve.R }} \pi } = {{ solve.P }}\)
+        </p>
+    </div>
+
+{% else %}
+    <form class="form-horizontal" action="{{ task.get_absolute_url }}" method="get">
+        <div class="form-group">
+            <div class="col-xs-3">
+                <label for="S1" class="big-formuls-ftnz control-label">Введите \(S_1\)</label>
+            </div>
+            <div class="col-xs-9">
+                <input class="form-control" type="number" id="S1" name="S1" step="0.01" required>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-xs-3">
+                <label for="S2" class="big-formuls-ftnz control-label">Введите \(S_2\)</label>
+            </div>
+            <div class="col-xs-9">
+                <input class="form-control" type="number" id="S2" name="S2" step="0.01" required>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-xs-3">
+                <label for="R" class="big-formuls-ftnz control-label">Введите \(R\)</label>
+            </div>
+            <div class="col-xs-9">
+                <input class="form-control" type="number" id="R" name="R" step="0.01" required>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-xs-12 ">
+                <button class="btn btn-success" type="submit">Получить решение!</button>
+            </div>
+        </div>
+    </form>
+{% endif %}

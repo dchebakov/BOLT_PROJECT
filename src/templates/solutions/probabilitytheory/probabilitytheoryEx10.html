@@ -1,0 +1,42 @@
+{% if solve.is_valid %}
+    <div class="solution-block">
+        <p>Решение: </p>
+        <p class="big-formuls-ftnz">
+            Вероятность выпадения герба и решки одинаковы, \( p = q = 0,5 \)
+            Вероятность того, что \(А\) выиграет до \( {{ solve.k }} \) броска равна сумме вероятностей того,
+            что \(А\) выиграет на 1 броске, на 2 броске, …, на \( {{ solve.k_minus_1 }} \) броске, то есть:
+            \( P_{A_1} = p \cdot p^3 \cdot ... \cdot p^{ {{ solve.dk_minus_3 }} } = {{ solve.P_A1 }} \)<br>
+            Вероятность того, что \(А\) выиграет не позднее \( {{ solve.k }} \) броска равна сумме
+            вероятности того, что \(А\) выиграет до \( {{ solve.k }} \) броска и что А выиграет на
+            \( {{ solve.k }} \) броске: \( P_{A_2} = P_{A_1} + p^{ {{ solve.dk_minus_1 }} } = {{ solve.P_A2 }} \)<br>
+            Вероятность того, что \(B\) выиграет до \( {{ solve.k }} \) броска равна сумме вероятностей того,
+            что \(B\) выиграет на 1 броске, на 2 броске, …, на \( {{ solve.k_minus_1 }} \) броске, то есть:
+            \( P_{B_1} = p^2 \cdot p^4 \cdot ... \cdot p^{ {{ solve.dk_minus_2 }} } = {{ solve.P_B1 }} \)<br>
+            Вероятность того, что \(B\) выиграет не позднее \( {{ solve.k }} \) броска равна сумме
+            вероятности того, что \(B\) выиграет до \( {{ solve.k }} \) броска и что B выиграет на
+            \( {{ solve.k }} \) броске: \( P_{B_2} = P_{B_1} + p^{ {{ solve.dk }} } = {{ solve.P_B2 }} \)<br>
+            Чтобы найти вероятность выигрыша игрока А при сколь угодно долгой игре, нужно положить \(
+            k \rightarrow \infty \). По формуле суммы бесконечно убывающей геометрической прогрессии получаем:
+            \(P_{A_3} = \large \frac{1}{2} \frac{1}{1 - \frac{1}{4}} \) \( = {{ solve.P_A3 }} \) и для игрока B:
+            \( P_{B_3} = 1 - P_{A_3} = {{ solve.P_B3 }}\).
+        </p>
+    </div>
+{% else %}
+    <form class="form-horizontal" action="{{ task.get_absolute_url }}" method="get">
+        <div class="form-group">
+            <div class="col-xs-3">
+                <label for="k" class="control-label big-formuls-ftnz">Введите \(k\)</label>
+            </div>
+
+            <div class="col-xs-9">
+                <input class="form-control" type="number" id="k" name="k" required>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-xs-12 ">
+                <button class="btn btn-success" type="submit">Получить решение!</button>
+            </div>
+        </div>
+    </form>
+
+{% endif %}

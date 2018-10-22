@@ -1,0 +1,67 @@
+{% if solve.is_valid %}
+    <div class="solution-block">
+        <p>Решение:</p>
+        <p class="big-formuls-ftnz">(СЛУЧАЙ БЕЗ ВОЗВРАЩЕНИЯ)<br>
+            Используем классическое определение вероятности:
+            \( P = \large \frac{M}{N} \), где \( M \large \) – число исходов, благоприятствующих
+            осуществлению события, а \( N \) – число всех возможных исходов.<br>
+            \( N = C^{ {{ solve.m }} }_{ {{ solve.n }} } = {{ solve.N }} \) - число различных способов выбрать \(
+            {{ solve.m }} \) билета из \( {{ solve.n }} \).<br>
+            \( M = C^{ {{ solve.l }} }_{ {{ solve.k }} } \cdot C^{ {{ solve.m_minus_l }} }_{
+            {{ solve.n_minus_k }} } = {{ solve.M }} \) - число различных способов выбрать \( {{ solve.l }} \)
+            выигрышных билета (из \( {{ solve.k }} \) выигрышных) и еще \( {{ solve.m_minus_l }}
+            \) невыигрышных (из \( {{ solve.n }}-{{ solve.k }}={{ solve.n_minus_k }} \)).<br>
+            Тогда искомая вероятность:
+            \( \: P = \large \frac{ {{ solve.M }} }{ {{ solve.N }} } \)\( = {{ solve.P_without }} \).
+        </p>
+        <p class="big-formuls-ftnz"><br>(СЛУЧАЙ С ВОЗВРАЩЕНИЕМ)<br>
+            Вероятность взять из генеральной совокупности выигрышный билет: \( p = \large
+            \frac{k}{n} \), \( q = 1 - p \) <br>
+            Тогда используя формулу Бернулли:
+            \( P_m(l) = C^{ l }_{ m } p^{ l } q^{ m-l }
+            = C^{ {{ solve.l }} }_{ {{ solve.m }} } \cdot p^{ {{ solve.l }} } \cdot q^{ {{ solve.m_minus_l }} }
+            =  {{ solve.P_with }} \) получаем искомую вероятность.
+        </p>
+    </div>
+
+{% else %}
+    <form class="form-horizontal" action="{{ task.get_absolute_url }}" method="get">
+        <div class="form-group">
+            <div class="col-xs-3">
+                <label for="n" class="big-formuls-ftnz control-label">Введите \(n\)</label>
+            </div>
+            <div class="col-xs-9">
+                <input class="form-control" type="number" id="n" name="n" required>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-xs-3">
+                <label for="l" class="big-formuls-ftnz control-label">Введите \(l\)</label>
+            </div>
+            <div class="col-xs-9">
+                <input class="form-control" type="number" id="l" name="l" required>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-xs-3">
+                <label for="m" class="big-formuls-ftnz control-label">Введите \(m\)</label>
+            </div>
+            <div class="col-xs-9">
+                <input class="form-control" type="number" id="m" name="m" required>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-xs-3">
+                <label for="k" class="big-formuls-ftnz control-label">Введите \(k\)</label>
+            </div>
+            <div class="col-xs-9">
+                <input class="form-control" type="number" id="k" name="k" required>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-xs-12 ">
+                <button class="btn btn-success" type="submit">Получить решение!</button>
+            </div>
+        </div>
+    </form>
+{% endif %}
