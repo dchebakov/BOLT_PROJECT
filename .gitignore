@@ -1,6 +1,8 @@
 src/db.sqlite3
+src/db-example.sqlite3
+src/db-old.sqlite3
 src/BOLT_PROJECT/settings.py
-files/media
+files/
 env/
 .idea
-
+__pycache__
