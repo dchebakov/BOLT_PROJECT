@@ -1,4 +1,4 @@
-ansible==2.7.9
+ansible==2.7.16
 appnope==0.1.0
 asn1crypto==0.24.0
 astroid==2.2.5
