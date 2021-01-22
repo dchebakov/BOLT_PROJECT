@@ -9,7 +9,7 @@ cffi==1.14.4
 Click==7.0
 cryptography==2.6.1
 decorator==4.4.0
-Django==3.0.5
+Django==3.0.7
 django-appconf==1.0.3
 django-autoslug==1.9.4
 django-imagekit==4.0.2
