@@ -7,7 +7,7 @@ backcall==0.1.0
 bcrypt==3.1.6
 cffi==1.14.4
 Click==7.0
-cryptography==2.6.1
+cryptography==3.2
 decorator==4.4.0
 Django==3.0.5
 django-appconf==1.0.3
