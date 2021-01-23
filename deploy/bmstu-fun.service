@@ -1,0 +1,14 @@
+[Unit]
+Description=bmstu.fun uWSGI service
+
+[Service]
+ExecStart=/srv/bmstu-fun/venv/bin/uwsgi --ini /srv/bmstu-fun/deploy/uwsgi.ini
+Restart=on-failure
+Type=notify
+StandardOutput=syslog
+StandardError=syslog
+SyslogIdentifier=uWSGI
+
+[Install]
+WantedBy=multi-user.target
+

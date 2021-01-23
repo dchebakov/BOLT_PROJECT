@@ -42,7 +42,6 @@ $ unzip dump.zip
 $ cd ..
 $ sudo -u postgres psql bmstu_fun < fixtures/dump.pgsql
 $ mkdir media
-$ cp -r fixtures/media/* files/media
 ```
 
 #### 6. Запустить проект
