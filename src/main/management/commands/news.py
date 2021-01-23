@@ -1,5 +1,5 @@
 from django.core.management.base import BaseCommand, CommandError
-from BOLT.models import News
+from main.models import News
 from faker import Factory
 
 fake = Factory.create('en_US')

@@ -1,5 +1,5 @@
 from django.core.management.base import BaseCommand, CommandError
-from BOLT.models import Section, Task
+from main.models import Section, Task
 from faker import Factory
 
 fake = Factory.create('en_US')

@@ -4,19 +4,19 @@ import os
 import re
 
 import scipy.stats as ss
-from BOLT.tasks.economics import *
-from BOLT.tasks.numericalanalysis import *
-from BOLT.tasks.analyticgeometry import *
-from BOLT.tasks.complexanalysis import *
-from BOLT.tasks.diffequation import *
-from BOLT.tasks.diffgeometry import *
-from BOLT.tasks.functionalanalysis import *
-from BOLT.tasks.linearalgebra import *
-from BOLT.tasks.mathanalysis import *
-from BOLT.tasks.mathstatistics import *
-from BOLT.tasks.probabilitytheory import *
-from BOLT.tasks.stochasticprocesstheory import *
-from BOLT.tasks.technopark import *
+from main.tasks.economics import *
+from main.tasks.numericalanalysis import *
+from main.tasks.analyticgeometry import *
+from main.tasks.complexanalysis import *
+from main.tasks.diffequation import *
+from main.tasks.diffgeometry import *
+from main.tasks.functionalanalysis import *
+from main.tasks.linearalgebra import *
+from main.tasks.mathanalysis import *
+from main.tasks.mathstatistics import *
+from main.tasks.probabilitytheory import *
+from main.tasks.stochasticprocesstheory import *
+from main.tasks.technopark import *
 from django.conf import settings as st
 from django.contrib import auth
 from django.contrib.auth.decorators import login_required

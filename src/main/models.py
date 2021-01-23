@@ -31,6 +31,7 @@ class News(models.Model):
     class Meta:
         verbose_name = 'New'
 
+
     def get_absolute_url(self):
         return reverse('news', args=[str(self.title)])
 
@@ -103,6 +104,7 @@ class Task(models.Model):
 
     class Meta:
         verbose_name = 'Task'
+
 
     def get_absolute_url(self):
         return reverse('task', args=[str(self.id)])
